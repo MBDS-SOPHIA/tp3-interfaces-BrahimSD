@@ -3,6 +3,7 @@ package com.brahim.example
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -30,13 +31,18 @@ class MainActivity : AppCompatActivity() {
      * Roll the dice and update the screen with the result.
      */
     private fun rollDice() {
-        // Create new Dice object with 6 sides and roll it
         val dice = Dice(6)
-        val diceRoll = dice.roll()
+        val diceRoll1 = dice.roll()
+        val diceRoll2 = dice.roll()
 
-        // Update the screen with the dice roll
-        val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = diceRoll.toString()
+        val resultTextView1: TextView = findViewById(R.id.textView)
+        val resultTextView2: TextView = findViewById(R.id.textView2)
+        resultTextView1.text = diceRoll1.toString()
+        resultTextView2.text = diceRoll2.toString()
+
+        if (diceRoll1 == diceRoll2) {
+            Toast.makeText(this, "Félicitations ! Vous avez fait un double !", Toast.LENGTH_SHORT).show()
+        }
     }
 }
 
